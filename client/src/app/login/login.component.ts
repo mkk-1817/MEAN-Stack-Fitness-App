@@ -8,21 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string = '';
+  mobile: string = '';
   password: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
     const user = {
-      email: this.email,
+      mobile: this.mobile,
       password: this.password,
     };
 
     this.authService.login(user).subscribe(
       (data) => {
         console.log(data);
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       (error) => {
         console.error(error);

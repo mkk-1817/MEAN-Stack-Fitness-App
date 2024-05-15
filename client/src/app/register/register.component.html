@@ -1,19 +1,33 @@
 <div>
-    <h2>Register</h2>
-    <form (ngSubmit)="onSubmit()">
-      <div>
-        <label>Name:</label>
-        <input type="text" [(ngModel)]="name" name="name" required />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input type="email" [(ngModel)]="email" name="email" required />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" [(ngModel)]="password" name="password" required />
-      </div>
-      <button type="submit">Register</button>
-    </form>
-  </div>
-  
+  <h2>Register</h2>
+  <form (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="name" name="name" required />
+
+    <label for="mobile">Mobile:</label>
+    <input type="text" id="mobile" [(ngModel)]="mobile" name="mobile" required />
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" [(ngModel)]="age" name="age" required />
+
+    <label for="gender">Gender:</label>
+    <input type="text" id="gender" [(ngModel)]="gender" name="gender" required />
+
+    <label for="height">Height:</label>
+    <input type="number" id="height" [(ngModel)]="height" name="height" required />
+
+    <label for="weight">Weight:</label>
+    <input type="number" id="weight" [(ngModel)]="weight" name="weight" required />
+
+    <label for="bloodGroup">Blood Group:</label>
+    <input type="text" id="bloodGroup" [(ngModel)]="bloodGroup" name="bloodGroup" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" [(ngModel)]="password" name="password" required />
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required />
+
+    <button type="submit">Register</button>
+  </form>
+</div>
