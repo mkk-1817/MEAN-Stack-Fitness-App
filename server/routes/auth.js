@@ -12,7 +12,7 @@ dotenv.config();
 // @desc     Register user
 // @access   Public
 router.post(
-  '/register',
+  'http://localhost:4200/register',
   [
     check('name', 'Name is required').not().isEmpty(),
     check('mobile', 'Please include a valid mobile number').isLength({ min: 10, max: 10 }),

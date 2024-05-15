@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  name: string;
-  mobile: string;
-  age: number;
-  gender: string;
-  height: number;
-  weight: number;
-  bloodGroup: string;
-  password: string;
-  confirmPassword: string;
+  name: string = '';
+  mobile: string = '';
+  age: number = 0;
+  gender: string = '';
+  height: number = 0;
+  weight: number = 0;
+  bloodGroup: string = '';
+  password: string = '';
+  confirmPassword: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -37,7 +37,7 @@ export class RegisterComponent {
       password: this.password,
     };
 
-    this.http.post('/api/auth/register', user)
+    this.http.post('/register', user)
       .subscribe(
         res => {
           console.log('Registration successful');
