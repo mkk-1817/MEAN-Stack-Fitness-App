@@ -1,33 +1,36 @@
-<div>
-  <h2>Register</h2>
-  <form (ngSubmit)="onSubmit()">
-    <label for="name">Name:</label>
+<div class="container">
+  <h2>Register Form</h2>
+  <form class="register-form" (ngSubmit)="onSubmit()">
+    <label for="name"><b>Name:</b></label>
     <input type="text" id="name" [(ngModel)]="name" name="name" required />
 
-    <label for="mobile">Mobile:</label>
+    <label for="mobile"><b>Mobile:</b></label>
     <input type="text" id="mobile" [(ngModel)]="mobile" name="mobile" required />
 
-    <label for="age">Age:</label>
-    <input type="number" id="age" [(ngModel)]="age" name="age" required />
+    <label for="age"><b>Age:</b></label>
+    <input type="text" id="age" [(ngModel)]="age" name="age" required />
 
-    <label for="gender">Gender:</label>
-    <input type="text" id="gender" [(ngModel)]="gender" name="gender" required />
+    <label for="gender"><b>Gender:</b></label>
+    <select id="gender" name="gender" (change)="onGenderChange($event)" required>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
 
-    <label for="height">Height:</label>
-    <input type="number" id="height" [(ngModel)]="height" name="height" required />
+    <label for="height"><b>Height (in cm):</b></label>
+    <input type="text" id="height" [(ngModel)]="height" name="height" placeholder="Enter height in centimeters" required />
 
-    <label for="weight">Weight:</label>
-    <input type="number" id="weight" [(ngModel)]="weight" name="weight" required />
+    <label for="weight"><b>Weight (in kg):</b></label>
+    <input type="text" id="weight" [(ngModel)]="weight" name="weight" placeholder="Enter weight in kilograms" required />
 
-    <label for="bloodGroup">Blood Group:</label>
+    <label for="bloodGroup"><b>Blood Group:</b></label>
     <input type="text" id="bloodGroup" [(ngModel)]="bloodGroup" name="bloodGroup" required />
 
-    <label for="password">Password:</label>
+    <label for="password"><b>Password:</b></label>
     <input type="password" id="password" [(ngModel)]="password" name="password" required />
 
-    <label for="confirmPassword">Confirm Password:</label>
+    <label for="confirmPassword"><b>Confirm Password:</b></label>
     <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required />
 
-    <button type="submit">Register</button>
+    <button class="button" type="submit">Register</button>
   </form>
 </div>

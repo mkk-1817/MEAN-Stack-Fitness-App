@@ -10,15 +10,20 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   name: string = '';
   mobile: string = '';
-  age: number = 0;
+  age: string = '';
   gender: string = '';
-  height: number = 0;
-  weight: number = 0;
+  height: string = '';
+  weight: string = '';
   bloodGroup: string = '';
   password: string = '';
   confirmPassword: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  onGenderChange(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    this.gender = target.value;
+  }
 
   onSubmit() {
     if (this.password !== this.confirmPassword) {
@@ -37,7 +42,7 @@ export class RegisterComponent {
       password: this.password,
     };
 
-    this.http.post('/register', user)
+    this.http.post('/api/auth/register', user)
       .subscribe(
         res => {
           console.log('Registration successful');

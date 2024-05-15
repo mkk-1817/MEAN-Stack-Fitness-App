@@ -1,14 +1,15 @@
-<div>
+<br><br><br><br><br><br><br><br>
+<div class="container">
   <h2>Login</h2>
-  <form (ngSubmit)="onSubmit()">
-    <div>
-      <label>Mobile Number:</label>
-      <input type="text" [(ngModel)]="mobile" name="mobile" required />
+  <form class="login-form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="mobile">Mobile Number:</label>
+      <input type="text" id="mobile" [(ngModel)]="mobile" name="mobile" required />
     </div>
-    <div>
-      <label>Password:</label>
-      <input type="password" [(ngModel)]="password" name="password" required />
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required />
     </div>
-    <button type="submit">Login</button>
+    <button class="button" type="submit">Login</button>
   </form>
 </div>
