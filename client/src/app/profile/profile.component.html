@@ -1,1 +1,9 @@
-<p>profile works!</p>
+<!-- profile.component.html -->
+<div *ngIf="userDetails">
+  <h2>User Profile</h2>
+  <p><strong>Name:</strong> {{ userDetails.name }}</p>
+  <p><strong>Mobile:</strong> {{ userDetails.mobile }}</p>
+  <p><strong>Age:</strong> {{ userDetails.age }}</p>
+  <!-- Add more user details as needed -->
+</div>
+

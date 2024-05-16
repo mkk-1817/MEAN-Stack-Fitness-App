@@ -26,6 +26,7 @@ export class LoginComponent {
       },
       (error) => {
         console.error(error);
+        alert('Login failed: ' + (error.error.msg || 'Unknown error'));
       }
     );
   }

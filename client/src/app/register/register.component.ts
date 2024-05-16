@@ -42,16 +42,15 @@ export class RegisterComponent {
       password: this.password,
     };
 
-    this.http.post('/api/auth/register', user)
-      .subscribe(
-        res => {
-          console.log('Registration successful');
-          this.router.navigate(['/login']);
-        },
-        err => {
-          console.error(err);
-          alert('Registration failed');
-        }
-      );
+    this.http.post('http://localhost:5000/api/auth/register', user).subscribe(
+      res => {
+        console.log('Registration successful');
+        this.router.navigate(['/login']);
+      },
+      err => {
+        console.error(err);
+        alert(`Registration failed: ${err.error.msg || 'Unknown error'}`);
+      }
+    );
   }
 }
