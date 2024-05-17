@@ -1,11 +1,77 @@
 <!-- profile.component.html -->
-<div *ngIf="userDetails">
+<div *ngIf="userDetails && !isEditing">
   <h2>User Profile</h2>
-  <p><strong>Name:</strong> {{ userDetails.name }}</p>
-  <p><strong>Mobile:</strong> {{ userDetails.mobile }}</p>
-  <p><strong>Age:</strong> {{ userDetails.age }}</p>
-  <!-- Add more user details as needed -->
+  <table>
+    <tr>
+      <th>Name</th>
+      <td>{{ userDetails.name }}</td>
+    </tr>
+    <tr>
+      <th>Mobile</th>
+      <td>{{ userDetails.mobile }}</td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td>{{ userDetails.age }}</td>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <td>{{ userDetails.gender }}</td>
+    </tr>
+    <tr>
+      <th>Height</th>
+      <td>{{ userDetails.height }}</td>
+    </tr>
+    <tr>
+      <th>Weight</th>
+      <td>{{ userDetails.weight }}</td>
+    </tr>
+    <tr>
+      <th>Blood Group</th>
+      <td>{{ userDetails.bloodGroup }}</td>
+    </tr>
+  </table>
+  <div class="edit-button">
+    <button (click)="editDetails()">Edit</button>
+  </div>
 </div>
+
+<div *ngIf="isEditing">
+  <h2>Edit Profile</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="editUserDetails.name" name="name">
+    </div>
+    <div>
+      <label>Mobile:</label>
+      <input type="text" [(ngModel)]="editUserDetails.mobile" name="mobile" disabled>
+    </div>
+    <div>
+      <label>Age:</label>
+      <input type="number" [(ngModel)]="editUserDetails.age" name="age">
+    </div>
+    <div>
+      <label>Gender:</label>
+      <input type="text" [(ngModel)]="editUserDetails.gender" name="gender">
+    </div>
+    <div>
+      <label>Height:</label>
+      <input type="number" [(ngModel)]="editUserDetails.height" name="height">
+    </div>
+    <div>
+      <label>Weight:</label>
+      <input type="number" [(ngModel)]="editUserDetails.weight" name="weight">
+    </div>
+    <div>
+      <label>Blood Group:</label>
+      <input type="text" [(ngModel)]="editUserDetails.bloodGroup" name="bloodGroup">
+    </div>
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
+
 <div *ngIf="errorMessage" class="error">
   {{ errorMessage }}
 </div>

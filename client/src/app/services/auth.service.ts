@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -32,5 +32,9 @@ export class AuthService {
     }
 
     return this.http.get(`${this.baseUrl}/user`, { params: { mobile: this.currentUserMobile } });
+  }
+
+  updateUserDetails(user: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/user`, user);
   }
 }

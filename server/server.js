@@ -98,5 +98,25 @@ app.get('/api/auth/user', async (req, res) => {
   }
 });
 
+app.put('/api/auth/user', async (req, res) => {
+  const { mobile, name, age, gender, height, weight, bloodGroup } = req.body;
+
+  try {
+    const user = await User.findOneAndUpdate(
+      { mobile },
+      { name, age, gender, height, weight, bloodGroup },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(400).json({ msg: 'User not found' });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: 'Server error' });
+  }
+});
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
