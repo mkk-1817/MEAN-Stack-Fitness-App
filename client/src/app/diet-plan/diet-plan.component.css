@@ -1,0 +1,40 @@
+/* diet-plan.component.css */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 24px;
+  color: #333;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.bmi {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.loading-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loading-message {
+  font-size: 16px;
+  color: #666;
+}
