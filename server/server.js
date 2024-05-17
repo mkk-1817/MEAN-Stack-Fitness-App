@@ -61,46 +61,42 @@ app.post('/api/auth/register', async (req, res) => {
   }
 });
 
-// Login endpoint
 app.post('/api/auth/login', async (req, res) => {
   const { mobile, password } = req.body;
 
   try {
-    // Check if user exists
     const user = await User.findOne({ mobile });
     if (!user) {
       return res.status(400).json({ msg: 'User not found' });
     }
 
-    // Check if password matches
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
 
-    // If user and password are correct, send a success message
-    res.status(200).json({ msg: 'Login successful' });
+    res.status(200).json({ msg: 'Login successful', user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: 'Server error' });
   }
 });
 
+
 app.get('/api/auth/user', async (req, res) => {
-  // Extract user details from request (you might need to implement authentication first)
-  const { mobile } = req.body;
+  const { mobile } = req.query;
 
   try {
-    // Retrieve user details from the database based on user credentials
     const user = await User.findOne({ mobile });
     if (!user) {
       return res.status(400).json({ msg: 'User not found' });
     }
-    res.status(200).json(user); // Send user details in response
+    res.status(200).json(user);
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: 'Server error' });
   }
 });
+
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

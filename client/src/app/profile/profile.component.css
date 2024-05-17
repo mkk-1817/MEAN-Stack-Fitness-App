@@ -1,0 +1,22 @@
+/* profile.component.css */
+.profile-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  

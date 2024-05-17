@@ -6,4 +6,6 @@
   <p><strong>Age:</strong> {{ userDetails.age }}</p>
   <!-- Add more user details as needed -->
 </div>
-
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
