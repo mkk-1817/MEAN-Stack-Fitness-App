@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-diet',
-  templateUrl: './diet-plan.component.html',
-  styleUrls: ['./diet-plan.component.css']
+  selector: 'app-workout',
+  templateUrl: './workout.component.html',
+  styleUrls: ['./workout.component.css']
 })
-export class DietPlanComponent implements OnInit {
+export class WorkoutComponent implements OnInit {
   userDetails: any;
   bmi: number | null = null;
 

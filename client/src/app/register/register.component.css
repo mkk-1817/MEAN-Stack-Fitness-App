@@ -11,7 +11,9 @@
   display: flex;
   flex-direction: column;
 }
-
+h4{
+  text-align: center;
+}
 .register-form input[type="text"],
 .register-form input[type="password"] {
   margin-bottom: 10px;

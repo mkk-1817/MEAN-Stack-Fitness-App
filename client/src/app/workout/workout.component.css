@@ -1,0 +1,99 @@
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .navbar a {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+  
+  .navbar a:hover {
+    background-color: #555;
+  }
+  
+  .navbar a.active {
+    background-color: #007bff;
+  }
+/* General styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    font-size: 2em;
+  }
+  
+  .bmi {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  /* BMI categories styling */
+  .bmi-category {
+    margin-bottom: 20px;
+  }
+  
+  .category-title {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Exercise workouts styling */
+  .workouts {
+    margin-bottom: 20px;
+  }
+  
+  .workout-title {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .workout-list {
+    margin-left: 20px;
+  }
+  
+  .workout-list-item {
+    margin-bottom: 10px;
+  }
+  
+  /* General tips styling */
+  .tips {
+    margin-bottom: 20px;
+  }
+  
+  .tips-title {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .tips-list {
+    margin-left: 20px;
+  }
+  
+  .tips-list-item {
+    margin-bottom: 10px;
+  }
