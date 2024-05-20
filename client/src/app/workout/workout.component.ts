@@ -9,16 +9,19 @@ import { AuthService } from '../services/auth.service';
 export class WorkoutComponent implements OnInit {
   userDetails: any;
   bmi: number | null = null;
-  workoutPlan: any = null;
+  workoutPlan: string[] = []; // Declare workoutPlan as an array of strings
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.authService.getUserDetails().subscribe(
       (data) => {
+        console.log('User Details:', data); // Debugging line
         this.userDetails = data;
         this.calculateBMI();
-        this.fetchWorkoutPlan();
+        if (data.workoutPlan && data.workoutPlan.length > 0) {
+          this.workoutPlan = data.workoutPlan[0].exercises; // Access the exercises array
+        }
       },
       (error) => {
         console.error('Error fetching user details:', error);
@@ -26,34 +29,13 @@ export class WorkoutComponent implements OnInit {
     );
   }
 
+
   calculateBMI(): void {
     if (this.userDetails && this.userDetails.height && this.userDetails.weight) {
       const heightInMeters = this.userDetails.height / 100;
       this.bmi = this.userDetails.weight / (heightInMeters * heightInMeters);
     } else {
       console.error('Height or weight data is missing');
-    }
-  }
-
-  fetchWorkoutPlan(): void {
-    if (this.bmi !== null) {
-      let bmiCategory: string;
-      if (this.bmi < 18.5) {
-        bmiCategory = 'underweight';
-      } else if (this.bmi >= 18.5 && this.bmi < 25) {
-        bmiCategory = 'normal';
-      } else {
-        bmiCategory = 'overweight';
-      }
-
-      this.authService.getWorkoutPlan(bmiCategory).subscribe(
-        (plan) => {
-          this.workoutPlan = plan;
-        },
-        (error) => {
-          console.error('Error fetching workout plan:', error);
-        }
-      );
     }
   }
 }

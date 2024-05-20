@@ -9,16 +9,19 @@ import { AuthService } from '../services/auth.service';
 export class DietPlanComponent implements OnInit {
   userDetails: any;
   bmi: number | null = null;
-  dietPlan: any = null;
+  dietPlan: string[] = []; // Declare dietPlan as an array of strings
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.authService.getUserDetails().subscribe(
       (data) => {
+        console.log('User Details:', data); // Debugging line
         this.userDetails = data;
         this.calculateBMI();
-        this.fetchDietPlan();
+        if (data.dietPlan && data.dietPlan.length > 0) {
+          this.dietPlan = data.dietPlan[0].meals; // Correctly accessing nested array
+        }
       },
       (error) => {
         console.error('Error fetching user details:', error);
@@ -32,28 +35,6 @@ export class DietPlanComponent implements OnInit {
       this.bmi = this.userDetails.weight / (heightInMeters * heightInMeters);
     } else {
       console.error('Height or weight data is missing');
-    }
-  }
-
-  fetchDietPlan(): void {
-    if (this.bmi !== null) {
-      let bmiCategory: string;
-      if (this.bmi < 18.5) {
-        bmiCategory = 'underweight';
-      } else if (this.bmi >= 18.5 && this.bmi < 25) {
-        bmiCategory = 'normal';
-      } else {
-        bmiCategory = 'overweight';
-      }
-
-      this.authService.getDietPlan(bmiCategory).subscribe(
-        (plan) => {
-          this.dietPlan = plan;
-        },
-        (error) => {
-          console.error('Error fetching diet plan:', error);
-        }
-      );
     }
   }
 }

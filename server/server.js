@@ -157,7 +157,9 @@ app.get('/api/auth/user', async (req, res) => {
   const { mobile } = req.query;
 
   try {
-    const user = await User.findOne({ mobile }).populate('dietPlan').populate('workoutPlan');
+    const user = await User.findOne({ mobile })
+      .populate('dietPlan', 'meals')
+      .populate('workoutPlan', 'exercises');
     if (!user) {
       return res.status(400).json({ msg: 'User not found' });
     }
@@ -167,6 +169,7 @@ app.get('/api/auth/user', async (req, res) => {
     res.status(500).json({ msg: 'Server error' });
   }
 });
+
 
 app.put('/api/auth/user', async (req, res) => {
   const { mobile, name, age, gender, height, weight, bloodGroup, dietPlan, workoutPlan } = req.body;

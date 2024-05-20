@@ -5,20 +5,21 @@
   <a routerLink="/profile" routerLinkActive="active">Profile</a>
   <a routerLink="/login" routerLinkActive="active">Logout</a>
 </nav>
-<div class="container">
+  <div class="container">
   <h2>Workout Plan</h2>
-  <div *ngIf="userDetails" class="bmi">
+    <div *ngIf="userDetails" class="bmi">
     <p><strong>BMI:</strong> {{ bmi }}</p>
   </div>
-  
-  <div *ngIf="workoutPlan" class="workouts">
-    <div class="workout-title"><strong>Exercise Workouts</strong></div>
-    <div class="workout-list">
-      <div *ngFor="let item of workoutPlan.exercises" class="workout-list-item">
-        {{ item }}
-      </div>
-    </div>
+  <div *ngIf="workoutPlan.length > 0; else noWorkoutPlan">
+    <ul>
+      <li *ngFor="let exercise of workoutPlan">{{ exercise }}</li>
+    </ul>
   </div>
+  <ng-template #noWorkoutPlan>
+    <p>No workout plan available.</p>
+  </ng-template>
+</div>
+
   
   <div class="tips">
     <div class="tips-title"><strong>Tips for All BMIs</strong></div>
@@ -28,5 +29,4 @@
       <li class="tips-list-item"><b>Listen to Your Body:</b> Adjust your plan based on how your body responds, ensuring you don’t overexert or under-nourish yourself.</li>
     </ul>
   </div>
-</div>
 <router-outlet></router-outlet>
