@@ -31,6 +31,24 @@ export class RegisterComponent {
       return;
     }
 
+    const defaultDietPlan = {
+      // Define your default diet plan here
+      meals: [
+        { meal: 'Breakfast', items: ['Oatmeal', 'Fruit'] },
+        { meal: 'Lunch', items: ['Grilled Chicken', 'Salad'] },
+        { meal: 'Dinner', items: ['Fish', 'Vegetables'] }
+      ]
+    };
+
+    const defaultWorkoutPlan = {
+      // Define your default workout plan here
+      workouts: [
+        { day: 'Monday', exercises: ['Push-ups', 'Squats'] },
+        { day: 'Wednesday', exercises: ['Pull-ups', 'Lunges'] },
+        { day: 'Friday', exercises: ['Plank', 'Deadlifts'] }
+      ]
+    };
+
     const user = {
       name: this.name,
       mobile: this.mobile,
@@ -40,6 +58,8 @@ export class RegisterComponent {
       weight: this.weight,
       bloodGroup: this.bloodGroup,
       password: this.password,
+      dietPlan: defaultDietPlan,
+      workoutPlan: defaultWorkoutPlan
     };
 
     this.http.post('http://localhost:5000/api/auth/register', user).subscribe(

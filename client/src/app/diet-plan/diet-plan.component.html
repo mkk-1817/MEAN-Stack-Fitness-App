@@ -11,45 +11,22 @@
     <p><strong>BMI:</strong> {{ bmi }}</p>
   </div>
   
-  <div *ngIf="bmi !== null" class="bmi-category">
-    <div *ngIf="bmi < 18.5" class="category-title">Underweight (BMI < 18.5)</div>
-    <div *ngIf="bmi >= 18.5 && bmi < 25" class="category-title">Normal Weight (BMI 18.5-24.9)</div>
-    <div *ngIf="bmi >= 25" class="category-title">Overweight/Obese (BMI ≥ 25)</div>
-    
-    <div class="diet-plan">
-      <div class="diet-title"><strong>Diet Plan</strong></div>
-      <div *ngIf="bmi < 18.5" class="diet-list">
-        <div class="diet-list-item">1. Calorie-Dense Foods: Focus on high-calorie, nutrient-rich foods like nuts, seeds, avocados, and dried fruits.</div>
-        <div class="diet-list-item">2. Frequent Meals: Eat smaller, frequent meals throughout the day to increase calorie intake.</div>
-        <div class="diet-list-item">3. Protein-Rich Foods: Include lean meats, dairy products, beans, and legumes to build muscle mass.</div>
-        <div class="diet-list-item">4. Healthy Fats: Incorporate sources of healthy fats like olive oil, nuts, and fatty fish.</div>
-        <div class="diet-list-item">5. Complex Carbohydrates: Include whole grains, starchy vegetables, and legumes to provide sustained energy.</div>
-      </div>
-      
-      <div *ngIf="bmi >= 18.5 && bmi < 25" class="diet-list">
-        <div class="diet-list-item">1. Balanced Diet: Follow a balanced diet with a variety of foods from all food groups: fruits, vegetables, lean proteins, whole grains, and healthy fats.</div>
-        <div class="diet-list-item">2. Portion Control: Practice portion control to maintain a healthy weight.</div>
-        <div class="diet-list-item">3. Nutrient-Dense Foods: Choose nutrient-dense foods over empty calories (e.g., sugary snacks).</div>
-        <div class="diet-list-item">4. Hydration: Drink plenty of water throughout the day.</div>
-        <div class="diet-list-item">5. Moderation: Enjoy treats and indulgences in moderation.</div>
-      </div>
-      
-      <div *ngIf="bmi >= 25" class="diet-list">
-        <div class="diet-list-item">1. Caloric Deficit: Create a caloric deficit by consuming fewer calories than you burn, focusing on a gradual and sustainable weight loss (1-2 pounds per week).</div>
-        <div class="diet-list-item">2. High-Fiber Foods: Eat high-fiber foods like fruits, vegetables, whole grains, and legumes to promote satiety.</div>
-        <div class="diet-list-item">3. Lean Proteins: Include lean proteins such as chicken, fish, tofu, and legumes to preserve muscle mass during weight loss.</div>
-        <div class="diet-list-item">4. Healthy Fats: Consume healthy fats in moderation, such as those from avocados, nuts, and olive oil.</div>
-        <div class="diet-list-item">5. Limit Processed Foods: Reduce intake of processed foods, sugary beverages, and high-fat snacks.</div>
-      </div>
+  <div *ngIf="dietPlan" class="diet-plan">
+  <div class="diet-title"><strong>Diet Plan</strong></div>
+  <div class="diet-list">
+    <div *ngFor="let meal of dietPlan" class="diet-list-item">
+      <div>{{ meal }}</div>
     </div>
   </div>
-  
+</div>
+
+
   <div class="tips">
-    <div class="tips-title"><strong> Tips for All BMIs</strong></div>
+    <div class="tips-title"><strong>Tips for All BMIs</strong></div>
     <ul class="tips-list">
       <li class="tips-list-item"><b>Consult Professionals:</b> Before starting any diet or exercise program, consult with healthcare providers or dietitians to tailor plans to individual needs and conditions.</li>
-        <li class="tips-list-item"><b>Stay Consistent:</b> Consistency is key in both diet and exercise to achieve and maintain health goals.</li>
-        <li class="tips-list-item"><b>Listen to Your Body:</b> Adjust your plan based on how your body responds, ensuring you don’t overexert or under-nourish yourself.</li>
+      <li class="tips-list-item"><b>Stay Consistent:</b> Consistency is key in both diet and exercise to achieve and maintain health goals.</li>
+      <li class="tips-list-item"><b>Listen to Your Body:</b> Adjust your plan based on how your body responds, ensuring you don’t overexert or under-nourish yourself.</li>
     </ul>
   </div>
 </div>

@@ -37,4 +37,12 @@ export class AuthService {
   updateUserDetails(user: any): Observable<any> {
     return this.http.put(`${this.baseUrl}/user`, user);
   }
+
+  getDietPlan(bmiCategory: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/diet-plan`, { params: { category: bmiCategory } });
+  }
+
+  getWorkoutPlan(bmiCategory: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/workout-plan`, { params: { category: bmiCategory } });
+  }
 }
