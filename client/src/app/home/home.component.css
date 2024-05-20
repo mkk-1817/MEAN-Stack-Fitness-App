@@ -29,7 +29,7 @@ body {
 
 a {
   text-decoration: none;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 /* Container for the home page */
@@ -40,7 +40,7 @@ a {
 /* Header section */
 .header {
   background: url('/assets/imgs/bg.jpg') no-repeat center center/cover;
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 100px 0;
 }
 
@@ -60,7 +60,7 @@ a {
 }
 
 .header .btn {
-  background-color: #ff5722;
+  background-color: #29fc16;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;

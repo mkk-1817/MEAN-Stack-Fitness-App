@@ -1,170 +1,123 @@
-/* diet-plan.component.css */
+/* General styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .header {
-  text-align: center;
-  margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .title {
-  font-size: 24px;
-  color: #333;
+    font-size: 2em;
+    color: #333;
 }
 
 .card {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .bmi {
-  font-size: 18px;
-  color: #666;
-  margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
 }
 
 .loading-container {
-  text-align: center;
-  margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .loading-message {
-  font-size: 16px;
-  color: #666;
+    font-size: 1em;
+    color: #666;
 }
+
+/* Navbar styling */
 .navbar {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
 }
 
 .navbar a {
-  display: inline-block;
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 20px;
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
 }
 
 .navbar a:hover {
-  background-color: #555;
+    background-color: #555;
 }
 
 .navbar a.active {
-  background-color: #007bff;
-}
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+    background-color: #007bff;
 }
 
-.bmi {
-  margin-bottom: 20px;
-}
-
+/* BMI categories styling */
 .bmi-category {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .category-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
 }
 
+/* Diet plan styling */
 .diet-plan {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .diet-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
 }
 
 .diet-list {
-  padding-left: 20px;
+    margin-left: 20px;
 }
 
 .diet-list-item {
-  margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
+/* Tips styling */
 .tips {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .tips-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
 }
 
 .tips-list {
-  padding-left: 20px;
+    margin-left: 20px;
 }
 
 .tips-list-item {
-  margin-bottom: 5px;
-}.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.bmi {
-  margin-bottom: 20px;
-}
-
-.bmi-category {
-  margin-bottom: 20px;
-}
-
-.category-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.diet-plan {
-  margin-bottom: 20px;
-}
-
-.diet-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.diet-list {
-  padding-left: 20px;
-}
-
-.diet-list-item {
-  margin-bottom: 5px;
-}
-
-.tips {
-  margin-bottom: 20px;
-}
-
-.tips-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.tips-list {
-  padding-left: 20px;
-}
-
-.tips-list-item {
-  margin-bottom: 5px;
+    margin-bottom: 10px;
 }
