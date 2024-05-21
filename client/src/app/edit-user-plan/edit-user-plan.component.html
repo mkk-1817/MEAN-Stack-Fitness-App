@@ -1,0 +1,31 @@
+<div>
+  <h2>Edit User Details</h2>
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="editUserDetails.name">
+  </div>
+  <div>
+    <label for="age">Age:</label>
+    <input type="text" id="age" [(ngModel)]="editUserDetails.age">
+  </div>
+  <div>
+    <label for="gender">Gender:</label>
+    <input type="text" id="gender" [(ngModel)]="editUserDetails.gender">
+  </div>
+  <div>
+    <label for="height">Height:</label>
+    <input type="text" id="height" [(ngModel)]="editUserDetails.height">
+  </div>
+  <div>
+    <label for="weight">Weight:</label>
+    <input type="text" id="weight" [(ngModel)]="editUserDetails.weight">
+  </div>
+  <div>
+    <label for="bloodGroup">Blood Group:</label>
+    <input type="text" id="bloodGroup" [(ngModel)]="editUserDetails.bloodGroup">
+  </div>
+  <button (click)="editDetails()" *ngIf="!isEditing">Edit Details</button>
+  <button (click)="saveDetails()" *ngIf="isEditing">Save</button>
+  <button (click)="cancelEdit()" *ngIf="isEditing">Cancel</button>
+  <div *ngIf="errorMessage">{{ errorMessage }}</div>
+</div>

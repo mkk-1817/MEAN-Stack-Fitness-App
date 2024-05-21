@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/User');
 const DietPlan = require('./models/DietPlan');
 const WorkoutPlan = require('./models/WorkoutPlan');
+const Admin = require('./models/Admin');
 require('dotenv').config();
 
 const app = express();
@@ -175,24 +176,68 @@ app.put('/api/auth/user', async (req, res) => {
   const { mobile, name, age, gender, height, weight, bloodGroup, dietPlan, workoutPlan } = req.body;
 
   try {
-    const user = await User.findOneAndUpdate(
-      { mobile },
-      { name, age, gender, height, weight, bloodGroup },
-      { new: true }
-    ).populate('dietPlan').populate('workoutPlan');
+  const user = await User.findOneAndUpdate(
+    { mobile },
+    { name, age, gender, height, weight, bloodGroup },
+    { new: true }
+  ).populate('dietPlan').populate('workoutPlan');
 
+  if (!user) {
+    return res.status(400).json({ msg: 'User not found' });
+  }
+
+  // Check if diet plan exists
+  if (user.dietPlan.length > 0 && dietPlan) {
+    await DietPlan.findByIdAndUpdate(user.dietPlan[0]._id, { meals: dietPlan }, { new: true });
+  }
+
+  // Check if workout plan exists
+  if (user.workoutPlan.length > 0 && workoutPlan) {
+    await WorkoutPlan.findByIdAndUpdate(user.workoutPlan[0]._id, { exercises: workoutPlan }, { new: true });
+  }
+
+  res.status(200).json(user);
+} catch (error) {
+  console.error(error);
+  res.status(500).json({ msg: 'Server error' });
+}
+});
+
+// Modify the admin login endpoint
+app.post('/api/auth/admin-login', async (req, res) => {
+  const { username, password } = req.body;
+  const defaultAdminUsername = 'admin';
+  const defaultAdminPassword = 'adminpass';
+
+  try {
+    if (username === defaultAdminUsername && password === defaultAdminPassword) {
+      res.status(200).json({ msg: 'Admin login successful' });
+    } else {
+      res.status(400).json({ msg: 'Invalid credentials' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: 'Server error' });
+  }
+});
+
+app.get('/api/admin/users', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: 'Server error' });
+  }
+});
+
+app.get('/api/admin/user/mobile/:mobileNumber', async (req, res) => {
+  try {
+    const mobileNumber = req.params.mobileNumber;
+    const user = await User.findOne({ mobile: mobileNumber });
     if (!user) {
-      return res.status(400).json({ msg: 'User not found' });
+      return res.status(404).json({ msg: 'User not found' });
     }
-
-    if (dietPlan) {
-      await DietPlan.findByIdAndUpdate(user.dietPlan[0]._id, { meals: dietPlan }, { new: true });
-    }
-
-    if (workoutPlan) {
-      await WorkoutPlan.findByIdAndUpdate(user.workoutPlan[0]._id, { exercises: workoutPlan }, { new: true });
-    }
-
     res.status(200).json(user);
   } catch (error) {
     console.error(error);

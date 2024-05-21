@@ -1,0 +1,27 @@
+<h2>User Management</h2>
+<div *ngIf="users.length > 0">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>Blood Group</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.mobile }}</td>
+      <td>{{ user.age }}</td>
+      <td>{{ user.gender }}</td>
+      <td>{{ user.height }}</td>
+      <td>{{ user.weight }}</td>
+      <td>{{ user.bloodGroup }}</td>
+      <td>
+        <button (click)="editUserPlan(user._id)">Edit Plans</button>
+      </td>
+    </tr>
+  </table>
+</div>

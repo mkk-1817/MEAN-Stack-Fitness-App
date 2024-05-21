@@ -1,0 +1,29 @@
+<div class="admin-dashboard">
+  <h2>Admin Dashboard</h2>
+  <div *ngIf="users.length > 0">
+    <table class="admin-table">
+      <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Height</th>
+        <th>Weight</th>
+        <th>Blood Group</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let user of users" class="admin-row">
+        <td>{{ user.name }}</td>
+        <td>{{ user.mobile }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.height }}</td>
+        <td>{{ user.weight }}</td>
+        <td>{{ user.bloodGroup }}</td>
+        <td>
+          <button class="edit-button" (click)="editUser(user.mobile)">Edit Plans</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

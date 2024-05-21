@@ -10,6 +10,11 @@ import { HomeComponent } from './home/home.component';
 import { DietPlanComponent } from './diet-plan/diet-plan.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WorkoutComponent } from './workout/workout.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { EditUserPlanComponent } from './edit-user-plan/edit-user-plan.component';
+import { LoginSelectionComponent } from './login-selection/login-selection.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +25,11 @@ import { WorkoutComponent } from './workout/workout.component';
     DietPlanComponent,
     ProfileComponent,
     WorkoutComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent,
+    UserManagementComponent,
+    EditUserPlanComponent,
+    LoginSelectionComponent,
   ],
   imports: [
     BrowserModule,
