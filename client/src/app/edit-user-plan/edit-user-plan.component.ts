@@ -11,6 +11,8 @@ export class EditUserPlanComponent implements OnInit {
   editUserDetails: any = {};
   isEditing: boolean = false;
   errorMessage: string = '';
+  dietPlan: any[] = []; // Declare dietPlan property
+  workoutPlan: any[] = []; // Declare workoutPlan property
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -21,7 +23,19 @@ export class EditUserPlanComponent implements OnInit {
     if (mobile) {
       this.authService.getUserByMobile(mobile).subscribe(
         (user: any) => {
-          this.editUserDetails = user;
+          console.log('User:', user);
+
+          if (user) {
+            this.editUserDetails = user;
+            if (user.dietPlan && user.dietPlan.length > 0) {
+              this.dietPlan = user.dietPlan[0].meals; // Correctly accessing nested array
+            }
+            if (user.workoutPlan && user.workoutPlan.length > 0) {
+              this.workoutPlan = user.workoutPlan[0].exercises; // Access the exercises array
+            }
+          } else {
+            this.errorMessage = 'No user found';
+          }
         },
         (error: any) => {
           this.errorMessage = 'Error fetching user details';
