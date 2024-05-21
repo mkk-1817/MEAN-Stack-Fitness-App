@@ -69,16 +69,12 @@ export class AuthService {
     );
   }
 
-  updateUserDietPlan(userId: string, dietPlan: any): Observable<any> {
-    return this.http.put(`${this.adminUrl}/user/${userId}/diet-plan`, dietPlan).pipe(
-      catchError(this.handleError)
-    );
+  updateUserDietPlan(mobile: string, dietPlan: any): Observable<any> {
+    return this.http.put(`${this.adminUrl}/user/diet-plan`, { mobile, dietPlan });
   }
 
-  updateUserWorkoutPlan(userId: string, workoutPlan: any): Observable<any> {
-    return this.http.put(`${this.adminUrl}/user/${userId}/workout-plan`, workoutPlan).pipe(
-      catchError(this.handleError)
-    );
+  updateUserWorkoutPlan(mobile: string, workoutPlan: any): Observable<any> {
+    return this.http.put(`${this.adminUrl}/user/workout-plan`, { mobile, workoutPlan });
   }
 
   isAdmin(): boolean {

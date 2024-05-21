@@ -24,26 +24,7 @@
     <label for="bloodGroup">Blood Group:</label>
     <input type="text" id="bloodGroup" [(ngModel)]="editUserDetails.bloodGroup">
   </div>
-
-  <!-- Display diet plan -->
-  <div *ngIf="dietPlan && dietPlan.length > 0; else noDietPlan">
-    <h3>Diet Plan</h3>
-    <ul>
-      <li *ngFor="let meal of dietPlan">{{ meal }}</li>
-    </ul>
-  </div>
-  <ng-template #noDietPlan>
-    <p>No diet plan available</p>
-  </ng-template>
-
-  <!-- Display workout plan -->
-  <div *ngIf="workoutPlan && workoutPlan.length > 0; else noWorkoutPlan">
-    <h3>Workout Plan</h3>
-    <ul>
-      <li *ngFor="let exercise of workoutPlan">{{ exercise }}</li>
-    </ul>
-  </div>
-  <ng-template #noWorkoutPlan>
-    <p>No workout plan available</p>
-  </ng-template>
-</div>
+  <div></div>
+  <button (click)="editDetails()" *ngIf="!isEditing">Edit Details</button>
+  <button (click)="saveDetails()" *ngIf="isEditing">Save</button>
+  <button (click)="cancelEdit()" *ngIf="isEditing">Cancel</button>

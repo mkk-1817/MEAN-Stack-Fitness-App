@@ -26,4 +26,8 @@ export class AdminDashboardComponent implements OnInit {
   editUser(mobile: string) {
     this.router.navigate(['/edit-user-plan'], { state: { mobile } });
   }
+  
+  editPlan(mobile: string) {
+    this.router.navigate(['/edit-plan'], { state: { mobile } });
+  }
 }

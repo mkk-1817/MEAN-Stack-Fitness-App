@@ -15,6 +15,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UserManagementComponent } from './user-management/user-management.component';
 import { EditUserPlanComponent } from './edit-user-plan/edit-user-plan.component';
 import { LoginSelectionComponent } from './login-selection/login-selection.component';
+import { EditPlanComponent } from './edit-plan/edit-plan.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LoginSelectionComponent } from './login-selection/login-selection.compo
     UserManagementComponent,
     EditUserPlanComponent,
     LoginSelectionComponent,
+    EditPlanComponent,
   ],
   imports: [
     BrowserModule,

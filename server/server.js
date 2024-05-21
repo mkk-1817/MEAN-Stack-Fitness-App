@@ -112,7 +112,6 @@ app.post('/api/auth/register', async (req, res) => {
     });
     await workoutPlan.save();
 
-    // Update the user with the newly created diet and workout plans
     newUser.dietPlan.push(dietPlan._id);
     newUser.workoutPlan.push(workoutPlan._id);
     await newUser.save();
@@ -172,36 +171,51 @@ app.get('/api/auth/user', async (req, res) => {
 });
 
 
-app.put('/api/auth/user', async (req, res) => {
+app.put('/api/admin/user', async (req, res) => {
   const { mobile, name, age, gender, height, weight, bloodGroup, dietPlan, workoutPlan } = req.body;
 
   try {
-  const user = await User.findOneAndUpdate(
-    { mobile },
-    { name, age, gender, height, weight, bloodGroup },
-    { new: true }
-  ).populate('dietPlan').populate('workoutPlan');
+    const user = await User.findOneAndUpdate(
+      { mobile },
+      { name, age, gender, height, weight, bloodGroup },
+      { new: true }
+    ).populate('dietPlan').populate('workoutPlan');
 
-  if (!user) {
-    return res.status(400).json({ msg: 'User not found' });
+    if (!user) {
+      return res.status(400).json({ msg: 'User not found' });
+    }
+
+    // Update diet plan
+    if (dietPlan) {
+      if (user.dietPlan.length > 0) {
+        await DietPlan.findByIdAndUpdate(user.dietPlan[0]._id, { meals: dietPlan });
+      } else {
+        const newDietPlan = new DietPlan({ userId: user._id, mobile: user.mobile, meals: dietPlan });
+        await newDietPlan.save();
+        user.dietPlan.push(newDietPlan._id);
+        await user.save();
+      }
+    }
+
+    // Update workout plan
+    if (workoutPlan) {
+      if (user.workoutPlan.length > 0) {
+        await WorkoutPlan.findByIdAndUpdate(user.workoutPlan[0]._id, { exercises: workoutPlan });
+      } else {
+        const newWorkoutPlan = new WorkoutPlan({ userId: user._id, mobile: user.mobile, exercises: workoutPlan });
+        await newWorkoutPlan.save();
+        user.workoutPlan.push(newWorkoutPlan._id);
+        await user.save();
+      }
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: 'Server error' });
   }
-
-  // Check if diet plan exists
-  if (user.dietPlan.length > 0 && dietPlan) {
-    await DietPlan.findByIdAndUpdate(user.dietPlan[0]._id, { meals: dietPlan }, { new: true });
-  }
-
-  // Check if workout plan exists
-  if (user.workoutPlan.length > 0 && workoutPlan) {
-    await WorkoutPlan.findByIdAndUpdate(user.workoutPlan[0]._id, { exercises: workoutPlan }, { new: true });
-  }
-
-  res.status(200).json(user);
-} catch (error) {
-  console.error(error);
-  res.status(500).json({ msg: 'Server error' });
-}
 });
+
 
 // Modify the admin login endpoint
 app.post('/api/auth/admin-login', async (req, res) => {
@@ -239,6 +253,45 @@ app.get('/api/admin/user/mobile/:mobileNumber', async (req, res) => {
       return res.status(404).json({ msg: 'User not found' });
     }
     res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: 'Server error' });
+  }
+});
+// Update diet plan
+app.put('/api/admin/user/diet-plan', async (req, res) => {
+  const { mobile, dietPlan } = req.body;
+
+  try {
+    const user = await User.findOne({ mobile });
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+
+    // Update the diet plan for the user
+    await DietPlan.findOneAndUpdate({mobile:mobile}, { meals: dietPlan });
+    console.log()
+    res.status(200).json({ msg: 'Diet plan updated successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: 'Server error' });
+  }
+});
+
+// Update workout plan
+app.put('/api/admin/user/workout-plan', async (req, res) => {
+  const { mobile, workoutPlan } = req.body;
+
+  try {
+    const user = await User.findOne({ mobile });
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+
+    // Update the workout plan for the user
+    await WorkoutPlan.findOneAndUpdate({mobile:mobile},{ exercises: workoutPlan });
+
+    res.status(200).json({ msg: 'Workout plan updated successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: 'Server error' });

@@ -1,0 +1,46 @@
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+<!-- Display or edit diet plan -->
+<div *ngIf="isEditing; else displayPlans">
+  <h3>Edit Diet Plan</h3>
+  <ul>
+    <li *ngFor="let meal of dietPlan; let i = index">
+      <input [(ngModel)]="dietPlan[i]" placeholder="Enter Diet">
+    </li>
+  </ul>
+
+  <h3>Edit Workout Plan</h3>
+  <ul>
+    <li *ngFor="let exercise of workoutPlan; let i = index">
+      <input [(ngModel)]="workoutPlan[i]" placeholder="Enter Workout">
+    </li>
+  </ul>
+
+  <button (click)="saveDetails()">Save</button>
+  <button (click)="cancelEdit()">Cancel</button>
+</div>
+
+<ng-template #displayPlans>
+  <div *ngIf="dietPlan && dietPlan.length > 0; else noDietPlan">
+    <h3>Diet Plan</h3>
+    <ul>
+      <li *ngFor="let meal of dietPlan">{{ meal }}</li>
+    </ul>
+  </div>
+  <ng-template #noDietPlan>
+    <p>No diet plan available</p>
+  </ng-template>
+
+  <!-- Display workout plan -->
+  <div *ngIf="workoutPlan && workoutPlan.length > 0; else noWorkoutPlan">
+    <h3>Workout Plan</h3>
+    <ul>
+      <li *ngFor="let exercise of workoutPlan">{{ exercise }}</li>
+    </ul>
+  </div>
+  <ng-template #noWorkoutPlan>
+    <p>No workout plan available</p>
+  </ng-template>
+  
+  <button (click)="editDetails()">Edit Details</button>
+</ng-template>

@@ -26,4 +26,8 @@ export class UserManagementComponent implements OnInit {
   editUserPlan(userId: string) {
     this.router.navigate(['/edit-user-plan', userId]);
   }
+  
+  editPlan(userId: string) {
+    this.router.navigate(['/edit-plan', userId]);
+  }
 }

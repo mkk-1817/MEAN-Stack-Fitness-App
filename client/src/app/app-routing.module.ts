@@ -12,7 +12,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UserManagementComponent } from './user-management/user-management.component';
 import { EditUserPlanComponent } from './edit-user-plan/edit-user-plan.component';
 import { LoginSelectionComponent } from './login-selection/login-selection.component';
-
+import { EditPlanComponent } from './edit-plan/edit-plan.component';
 const routes: Routes = [
   { path: '', component: LoginSelectionComponent },
   { path: 'home', component: HomeComponent },
@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'edit-user-plan', component: EditUserPlanComponent },
   { path: '', redirectTo: '/admin-dashboard', pathMatch: 'full' },
+  { path: 'edit-plan', component: EditPlanComponent },
 ];
 
 @NgModule({

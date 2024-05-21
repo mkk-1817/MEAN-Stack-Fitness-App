@@ -20,6 +20,7 @@
       <td>{{ user.weight }}</td>
       <td>{{ user.bloodGroup }}</td>
       <td>
+        <button (click)="editUserPlan(user._id)">Edit Details</button><br><br>
         <button (click)="editUserPlan(user._id)">Edit Plans</button>
       </td>
     </tr>
