@@ -103,6 +103,7 @@ The application includes functionalities for:
 
 **Profile Editing:**
 ![Profile Editing](screenshots/profile-edit.png)
+[](screenshots/profile-edit-2.png)
 
 ## Concepts Used in MongoDB, Express.js, Angular, and Node.js
 
