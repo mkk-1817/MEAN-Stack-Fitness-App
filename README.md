@@ -76,34 +76,44 @@ The application includes functionalities for:
 ### Admin Interface
 
 **Admin Login:**
+
 ![Admin Login](screenshots/admin-login.png)
 
 **Admin Dashboard:**
+
 ![Admin Dashboard](screenshots/admin-dashboard.png)
 
 **Admin Edit Details and Plans:**
+
 ![Admin Edit Details](screenshots/admin-edit.png)
 
 ### User Interface
 
 **User Register:**
+
 ![User Register](screenshots/user-register.png)
 
 **User Login:**
+
 ![User Login](screenshots/user-login.png)
 
 **Home Page:**
+
 ![Home Page](screenshots/home-page.png)
 
 **Diet Plan:**
+
 ![Diet Plan](screenshots/diet-plan.png)
 
 **Workout Plan:**
+
 ![Workout Plan](screenshots/workout-plan.png)
 
 **Profile Editing:**
+
 ![Profile Editing](screenshots/profile-edit.png)
-[](screenshots/profile-edit-2.png)
+
+![](screenshots/profile-edit-2.png)
 
 ## Concepts Used in MongoDB, Express.js, Angular, and Node.js
 
@@ -146,9 +156,9 @@ The application includes functionalities for:
 - **Two-Factor Authentication**: Implement two-factor authentication to enhance security for user accounts.
 - **Data Encryption**: Ensure all sensitive data is encrypted both in transit and at rest.
 
-Feel free to clone the repository, contribute, or raise issues. We welcome all contributions to improve and enhance the **Fitness Training Studio** application.
-
 ## Let's Connect!
 🌐 LinkedIn: https://www.linkedin.com/in/subramanian-s-ab94302a1/ & https://www.linkedin.com/in/karthik-krishna-m/
 
 📧 Email: subramanian160104@gmail.com & karthikkrishna230104@gmail.com
+
+Feel free to clone the repository, contribute, or raise issues. We welcome all contributions to improve and enhance the **Fitness Training Studio** application.
